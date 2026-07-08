@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="18dp"
+    android:paddingTop="18dp"
+    android:paddingRight="18dp"
+    android:paddingBottom="38dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/widget_medium_dark_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="22dp"
+        android:paddingTop="22dp"
+        android:paddingRight="22dp"
+        android:paddingBottom="22dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="132"
+            android:background="@drawable/widget_medium_primary_light_bg"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp">
+
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="35" android:gravity="center|bottom" android:includeFontPadding="false" android:text="今日支出" android:textColor="#777771" android:textSize="15sp" android:textStyle="bold" />
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="55" android:ellipsize="end" android:gravity="center" android:includeFontPadding="false" android:maxLines="1" android:singleLine="true" android:text="¥117.00" android:textColor="#000000" android:textSize="27sp" android:textStyle="bold" />
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="30" android:gravity="center" android:includeFontPadding="false" android:text="5 笔" android:textColor="#777771" android:textSize="16sp" android:textStyle="bold" />
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="36" android:ellipsize="end" android:gravity="center|top" android:includeFontPadding="false" android:maxLines="1" android:singleLine="true" android:text="点按切换收入" android:textColor="#777771" android:textSize="10sp" android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView android:layout_width="24dp" android:layout_height="1dp" android:text="" />
+
+        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="193" android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="68" android:background="@drawable/widget_medium_amount_dark_bg" android:gravity="center" android:orientation="vertical" android:paddingLeft="16dp" android:paddingRight="16dp">
+                <TextView android:layout_width="match_parent" android:layout_height="20dp" android:ellipsize="end" android:gravity="center|bottom" android:includeFontPadding="false" android:maxLines="1" android:singleLine="true" android:text="支出・餐饮" android:textColor="#777771" android:textSize="11sp" android:textStyle="bold" />
+                <TextView android:layout_width="match_parent" android:layout_height="34dp" android:ellipsize="end" android:gravity="center|top" android:includeFontPadding="false" android:maxLines="1" android:singleLine="true" android:text="¥0.00" android:textColor="#0B0C0B" android:textSize="24sp" android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="9" android:text="" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="39" android:orientation="horizontal">
+                <TextView style="@style/WidgetMediumDarkAmountKey" android:text="+1" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkAmountKey" android:text="+5" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkAmountKey" android:text="+10" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="8" android:text="" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="39" android:orientation="horizontal">
+                <TextView style="@style/WidgetMediumDarkAmountKey" android:text="+50" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkAmountKey" android:text="-1" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkAmountKey" android:text="-5" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="24" android:text="" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="39" android:orientation="horizontal">
+                <TextView style="@style/WidgetMediumDarkCategoryKey" android:background="@drawable/widget_medium_selected_dark_bg" android:text="餐饮" android:textColor="#0B0C0B" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkCategoryKey" android:text="交通" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkCategoryKey" android:text="购物" />
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="8" android:text="" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="39" android:orientation="horizontal">
+                <TextView style="@style/WidgetMediumDarkCategoryKey" android:text="娱乐" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkCategoryKey" android:text="其他" />
+                <TextView android:layout_width="7dp" android:layout_height="1dp" android:text="" />
+                <TextView style="@style/WidgetMediumDarkCategoryKey" android:background="@drawable/widget_medium_selected_dark_bg" android:text="记入" android:textColor="#0B0C0B" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

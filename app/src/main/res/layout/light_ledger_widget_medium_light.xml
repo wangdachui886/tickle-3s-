@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="322dp"
+        android:layout_gravity="center"
+        android:background="@drawable/widget_medium_light_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="24dp"
+        android:paddingTop="24dp"
+        android:paddingRight="24dp"
+        android:paddingBottom="24dp">
+
+        <LinearLayout
+            android:id="@+id/widget_summary_area"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="132"
+            android:background="@drawable/widget_medium_light_panel_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="45"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/widget_date"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="26"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="今日支出"
+                android:textColor="#777771"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/widget_net_amount"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="54"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="¥117.00"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/widget_flow_summary"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="5 笔"
+                android:textColor="#777771"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="50"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/widget_pending"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="26"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="点按切换收入"
+                android:textColor="#777771"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10"
+                android:text="" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="24dp"
+            android:layout_height="1dp"
+            android:text="" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="193"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/widget_amount_box"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="68"
+                android:background="@drawable/widget_medium_amount_bg">
+
+                <TextView
+                    android:id="@+id/widget_draft_meta"
+                    android:layout_width="match_parent"
+                    android:layout_height="24dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="10dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="支出・餐饮"
+                    android:textColor="#E9E9E4"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/widget_draft_amount"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:ellipsize="end"
+                    android:gravity="center|bottom"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:paddingBottom="8dp"
+                    android:singleLine="true"
+                    android:text="¥0.00"
+                    android:textColor="#FFFFFF"
+                    android:textSize="27sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:text="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="39"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/widget_plus_one"
+                    style="@style/WidgetMediumLightAmountKey"
+                    android:text="+1" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_plus_five"
+                    style="@style/WidgetMediumLightAmountKey"
+                    android:text="+5" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_plus_ten"
+                    style="@style/WidgetMediumLightAmountKey"
+                    android:text="+10" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:text="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="39"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/widget_plus_fifty"
+                    style="@style/WidgetMediumLightAmountKey"
+                    android:text="+50" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_minus_one"
+                    style="@style/WidgetMediumLightAmountKey"
+                    android:text="-1" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_minus_five"
+                    style="@style/WidgetMediumLightAmountKey"
+                    android:text="-5" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="24"
+                android:text="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="39"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/widget_category_first"
+                    style="@style/WidgetMediumLightCategoryKey"
+                    android:background="@drawable/widget_medium_selected_bg"
+                    android:text="餐饮"
+                    android:textColor="#F8F7F2" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_category_second"
+                    style="@style/WidgetMediumLightCategoryKey"
+                    android:text="交通" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_category_third"
+                    style="@style/WidgetMediumLightCategoryKey"
+                    android:text="购物" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:text="" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="39"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/widget_category_fourth"
+                    style="@style/WidgetMediumLightCategoryKey"
+                    android:text="娱乐" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_category_other"
+                    style="@style/WidgetMediumLightCategoryKey"
+                    android:text="其他" />
+
+                <TextView
+                    android:layout_width="7dp"
+                    android:layout_height="1dp"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/widget_save"
+                    style="@style/WidgetMediumLightCategoryKey"
+                    android:background="@drawable/widget_medium_selected_bg"
+                    android:text="记入"
+                    android:textColor="#F8F7F2" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

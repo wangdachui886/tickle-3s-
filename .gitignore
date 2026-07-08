@@ -1,0 +1,33 @@
+.gradle/
+.idea/
+.kotlin/
+build/
+*/build/
+local.properties
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Local review/build outputs
+dist/
+artifacts/**
+!artifacts/
+!artifacts/README.md
+
+# Binary packages should be created from CI or local release commands.
+*.apk
+*.aab
+*.ap_
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# Local design source/process files. Export final public assets deliberately.
+*.ai
+design/source/
+design/widget-redesign/
+design/tutorial-cards/*.backup.svg
+design/tutorial-cards/tickle-widget-guide-cards*.png
+design/tutorial-cards/tickle-widget-guide-full-*.png

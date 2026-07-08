@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">tickle</string>
+    <string name="widget_description">今日收支和快速记账</string>
+    <string name="widget_label_compact">tickle 4x2 Dark</string>
+    <string name="widget_label_compact_light">tickle 4x2 Light</string>
+    <string name="widget_label_medium">tickle 4x3 Dark</string>
+    <string name="widget_label_medium_light">tickle 4x3 Light</string>
+    <string name="widget_label_large">tickle 4x4 Dark</string>
+    <string name="widget_label_large_light">tickle 4x4 Light</string>
+    <string name="widget_medium_description">4x3 大按钮快速记账</string>
+    <string name="widget_large_description">4x4 大字大按钮快速记账</string>
+    <string name="widget_light_description">浅色快速记账</string>
+</resources>
