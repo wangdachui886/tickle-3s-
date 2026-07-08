@@ -19,6 +19,9 @@ artifacts/**
 *.apk
 *.aab
 *.ap_
+!releases/
+!releases/*.apk
+!releases/README.md
 
 # OS/editor noise
 .DS_Store

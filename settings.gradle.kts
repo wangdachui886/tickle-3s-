@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LightLedger"
+rootProject.name = "tickle-3s"
 include(":app")

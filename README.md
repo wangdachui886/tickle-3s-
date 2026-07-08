@@ -1,142 +1,118 @@
-# tickle
+# tickle 3 秒记账
 
-tickle is a local-first Android bookkeeping app for fast manual logging.
+tickle 是一个面向中文用户的本地优先 Android 记账 App，主打「3 秒快速手动记账」和「桌面小组件直接记一笔」。
 
-The product direction is deliberately small: a 3-second ledger for quick daily
-expense and income records, with home-screen widgets as a first-class entry
-point and the app screens for editing, history, statistics, backup, restore,
-and onboarding.
+这个仓库是第一版公开源码快照。截图和最终版教程图还在整理中，后续会补到 README 和 `docs/` 里。
 
-This repository is the first public source snapshot. Screenshots and the final
-visual tutorial will be added after the current artwork pass is finished.
+## 下载体验
 
-## Product Principles
+当前可下载的是 mainline debug 体验包：
 
-- Manual entry and widget entry are first-class.
-- No screenshot/OCR or fragile background capture in the current product path.
-- Data stays local by default in Room.
-- Export and restore use plain CSV files under `Download/tickle`.
-- The visual language is quiet, black/white, minimal, and touch-friendly.
+[下载 tickle-3s-mainline-debug.apk](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle-3s-mainline-debug.apk)
 
-## Current Features
+说明：
 
-- Compose app shell with a compact onboarding guide.
-- Manual bookkeeping inside the app with date selection for backfilling.
-- Expense and income records with category selection and custom categories.
-- Quick category management with fixed home categories and an expanded "other"
-  category picker.
-- Ledger grouped by month/date, with expense/income filtering, edit, and delete.
-- Statistics by day, month, and year, with explicit expense/income mode instead
-  of net-flow reporting.
-- Minimal date/time picker sheets for quick entry, ledger editing, and period
-  navigation.
-- Lightweight motion and haptic feedback for app buttons, category switching,
-  amount changes, save success, and zero-amount warnings.
-- CSV export and restore from the latest exported backup.
-- Home-screen widgets in six variants:
-  - 4x2 dark
-  - 4x2 light
-  - 4x3 dark
-  - 4x3 light
-  - 4x4 dark
-  - 4x4 light
-- Widget direct entry, undo, expense/income switching, and midnight/day-change
-  refresh.
+- 这是用于体验和小范围测试的 debug APK，不是应用商店签名 release。
+- Android 安装时可能需要允许「安装未知来源应用」。
+- 当前包名是 `com.lightledger.app`，应用名是 `tickle`。
 
-## Android Modules
+## 产品方向
 
-The project is intentionally one Android app module for now, with clear package
-boundaries inside `app/src/main/java/com/lightledger/app`.
+- 手动记账优先，不依赖截图识别、OCR、通知读取或后台自动抓取。
+- 桌面小组件是核心入口：打开手机桌面就能快速记一笔。
+- 数据默认只保存在本机 Room 数据库。
+- 备份和恢复使用普通 CSV 文件，路径为 `Download/tickle`。
+- 界面方向克制、黑白、轻量，优先保证触控效率。
 
-- `data` - Room database, DAO, repository, CSV import/export.
-- `data/model` - database entities and enums.
-- `domain` - pure formatting, parsing, and category helper logic.
-- `ui` - Compose screens, onboarding, dialogs, motion helpers, and ViewModel.
-- `widget` - Android AppWidget providers, RemoteViews updates, and day-change
-  refresh receiver.
+## 当前功能
 
-More detail is in `docs/PROJECT_STRUCTURE.md`.
+- App 内快速记账，支持支出/收入切换。
+- 支持选择历史日期，方便补记。
+- 支持常用分类、自定义分类和分类管理。
+- 流水按月份和日期分组，支持筛选、编辑和删除。
+- 统计页支持日/月/年视角，并明确区分支出和收入。
+- 支持 CSV 导出和从最新导出文件恢复。
+- 支持 6 个桌面小组件：
+  - 4x2 深色
+  - 4x2 浅色
+  - 4x3 深色
+  - 4x3 浅色
+  - 4x4 深色
+  - 4x4 浅色
+- 小组件支持直接输入、撤销、支出/收入切换和跨天刷新。
 
-## Privacy
+## 隐私说明
 
-tickle does not use an account system, remote backend, analytics SDK, network
-API, screenshot capture, OCR, or notification reading in the current product
-path. Bookkeeping data is stored locally in Room. CSV export and restore are
-user-triggered and use files under `Download/tickle`.
+当前版本没有账号系统、远程后端、统计 SDK、网络接口、截图读取、OCR 或通知读取。记账数据存储在本机，CSV 导出/恢复由用户主动触发。
 
-## Export Format
+## 数据导出
 
-Exports are written to:
+CSV 文件导出到：
 
 ```text
 Download/tickle
 ```
 
-Each export creates a transaction CSV with date, direction, amount, unit, type,
-and note fields. The column contract is documented in `docs/DATA_EXPORT.md`.
+每次导出会生成一份交易 CSV，字段包括 `date`、`direction`、`amount`、`unit`、`type` 和 `note`。具体字段见 `docs/DATA_EXPORT.md`。
 
-## Local Development
+## 本地开发
 
-Open this path in Android Studio:
+用 Android Studio 打开项目根目录：
 
 ```text
 E:\AppDev\LightLedger
 ```
 
-This machine currently uses:
+本机开发环境示例：
 
 ```powershell
 $env:JAVA_HOME='D:\Andriod Studio\jbr'
 $env:PATH="$env:JAVA_HOME\bin;$env:PATH"
 ```
 
-Build the normal app:
+构建普通版本：
 
 ```powershell
 .\gradlew.bat :app:assembleMainlineDebug
 ```
 
-Build the friend-test app without replacing the mainline install:
+构建朋友测试版，不覆盖普通版本：
 
 ```powershell
 .\gradlew.bat :app:assembleFriendsDebug
 ```
 
-Run unit tests:
+运行单元测试：
 
 ```powershell
 .\gradlew.bat :app:testMainlineDebugUnitTest
 .\gradlew.bat :app:testFriendsDebugUnitTest
 ```
 
-Latest local debug APK copies are written to:
+本地 debug APK 会复制到：
 
 ```text
 dist\tickle-mainline-debug.apk
 dist\tickle-friends-debug.apk
 ```
 
-## Release Notes
+## 版本说明
 
-Current debug flavors:
+当前 debug flavors：
 
-- `mainline`: `com.lightledger.app`, app name `tickle`
-- `friends`: `com.lightledger.app.friends`, app name `tickle beta`
+- `mainline`: `com.lightledger.app`，应用名 `tickle`
+- `friends`: `com.lightledger.app.friends`，应用名 `tickle beta`
 
-Before public store release, create a signed release build, bump
-`versionCode`/`versionName`, prepare store screenshots and privacy copy, and
-repeat the widget/date/statistics/manual-entry regression checklist in
-`docs/RELEASE_CHECKLIST.md`.
+正式上架前还需要签名 release 包、更新 `versionCode` / `versionName`、准备商店截图和隐私文案，并按 `docs/RELEASE_CHECKLIST.md` 做完整回归。
 
 ## License
 
 Apache License 2.0.
 
-## Local-Only Folders
+## 本地目录说明
 
-- `dist/` - locally copied APKs for testing.
-- `artifacts/` - screenshots, UI dumps, test exports, old OCR/screenshot lab
-  materials, and other review evidence.
+- `dist/`：本地构建出的测试 APK，不直接作为源码目录维护。
+- `artifacts/`：本地截图、UI dump、测试导出、旧实验材料等，不进入公开仓库。
+- `releases/`：公开下载用 APK。后续有正式签名 release 后，会优先使用 GitHub Releases。
 
-Both folders are ignored by Git. Keep release artifacts and private samples out
-of the public repository unless they are intentionally sanitized.
+除明确放入 `releases/` 的公开 APK 外，其他构建产物、私有样本和过程材料都不进入仓库。
