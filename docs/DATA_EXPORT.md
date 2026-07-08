@@ -1,14 +1,16 @@
-# 数据导出
+# Data export
 
-Tickle 轻记会把流水导出成一个简洁的 UTF-8 CSV 文件。这个文件可以直接打开、自己备份，也可以之后再导回 App。
+tickle exports a compact UTF-8 CSV ledger file. The goal is that a user can
+open it directly, send it to a friend, restore it later, or give it to an LLM
+without being buried in technical tables.
 
-导出目录：
+Exports are written to:
 
 ```text
 Download/tickle
 ```
 
-文件名会带时间戳：
+The file name includes a timestamp:
 
 ```text
 transactions_YYYYMMDD_HHMMSS.csv
@@ -16,19 +18,19 @@ transactions_YYYYMMDD_HHMMSS.csv
 
 ## `transactions_*.csv`
 
-一行代表一笔记录。
+One row per ledger entry.
 
-| 字段 | 说明 |
+| Column | Meaning |
 | --- | --- |
-| `date` | 本地交易时间，格式为 `yyyy-MM-dd HH:mm:ss` |
-| `direction` | `in` 表示收入，`out` 表示支出 |
-| `amount` | 金额，使用正数 |
-| `unit` | 货币单位，目前为 `CNY` |
-| `type` | 用户看到的分类名 |
-| `note` | 备注；如果有商户信息，会合并到这里 |
+| `date` | Local transaction datetime, `yyyy-MM-dd HH:mm:ss`. |
+| `direction` | `in` for income, `out` for expense. |
+| `amount` | Absolute transaction amount. |
+| `unit` | Currency unit, currently `CNY`. |
+| `type` | User-facing category name. |
+| `note` | User note, with merchant appended when useful. |
 
-## 恢复
+## Restore
 
-恢复功能会读取 `Download/tickle` 里最新的 `transactions_*.csv`。
-
-当前版本支持上面的简洁格式，也尽量兼容早期较详细的导出文件。为了稳妥，恢复前建议先保留一份原 CSV。
+The restore flow reads the latest `transactions_*.csv` in `Download/tickle`.
+It supports this compact format and remains compatible with older detailed
+exports when those files are present.

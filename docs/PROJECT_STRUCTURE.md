@@ -1,99 +1,129 @@
-# 项目结构
+# Project structure
 
-Tickle 轻记是一个小型 Android App。公开仓库里只保留源码、必要文档、最终截图和当前体验包；过程稿、旧实验材料和本地构建产物默认不进仓库。
+tickle is organized as a small Android app with a strict split between product
+source, design assets, local evidence, and distributable builds.
 
-## 根目录
+## Workspace level
 
 ```text
-app/          Android 源码、资源、Manifest 和 Gradle 配置
-design/       公开设计说明；过程稿和源文件默认留在本地
-docs/         数据格式、项目结构和发布检查文档
-gradle/       Gradle Wrapper
-releases/     当前体验版 APK 和校验说明
+E:\AppDev
+  README.md
+  .gitignore
+  LightLedger\
 ```
 
-`.gradle/`、`build/`、`dist/`、`artifacts/`、`local.properties` 等本地文件已经在 `.gitignore` 里忽略。
+`E:\AppDev` is a local workspace. The app project root is `LightLedger/`.
 
-## 代码分层
+## App project level
+
+```text
+LightLedger\
+  app\          Android source, resources, manifest, Gradle config
+  design\       public design notes; source/process artwork is local by default
+  docs\         project, release, and data-format documentation
+  gradle\       Gradle wrapper files
+  artifacts\    local review evidence and historical experiments
+  dist\         local APK copies for sharing/testing
+```
+
+Only `app/`, `docs/`, Gradle files, top-level documentation, and deliberate
+public design notes should be considered normal project source. `artifacts/`,
+`dist/`, and process design source files are local-only by default.
+
+## App package boundaries
 
 ```text
 com.lightledger.app
-  data/
-    model/
-  domain/
-  ui/
-    theme/
-  widget/
+  data\
+    model\
+  domain\
+  ui\
+    theme\
+  widget\
 ```
 
 ### `data`
 
-负责持久化和导入导出。
+Owns persistence and import/export.
 
-- Room 数据库配置
-- DAO 查询
-- Repository 接口
-- CSV 导出和恢复
+- Room database setup.
+- DAO queries.
+- Repository APIs consumed by UI and widgets.
+- CSV export and restore logic.
 
-这里不放 Compose 界面，也不放桌面小组件的布局逻辑。
+Do not put Compose UI or Android widget layout decisions here.
 
 ### `data/model`
 
-负责数据库实体和枚举。这里的变更会影响已安装用户和未来备份兼容性，需要谨慎处理。
+Owns database entities and enums.
+
+Schema changes should be made deliberately because they affect installed users
+and future backups.
 
 ### `domain`
 
-负责不依赖 Android UI 的纯 Kotlin 逻辑，例如：
+Owns pure Kotlin logic that can be tested without Android UI.
 
-- 金额格式化
-- 时间格式化
-- 分类建议
-- 文本解析辅助
+Examples:
 
-能单元测试的规则优先放这里。
+- money formatting
+- time formatting
+- category suggestions
+- text parsing helpers
+
+New reusable rules should usually start here before they touch UI.
 
 ### `ui`
 
-负责 Compose 页面、弹窗、引导页和 `LightLedgerViewModel`。UI 通过 ViewModel 和 Repository 访问数据，不直接操作 DAO。
+Owns Compose screens, dialogs, onboarding, and the ViewModel.
+
+The UI should talk to app data through `LightLedgerViewModel` and repository
+methods, not directly through DAO objects.
 
 ### `widget`
 
-负责 Android 桌面小组件和 RemoteViews 渲染。小组件动作尽量保持简单：更新临时状态、写入确认后的记账记录，然后刷新小组件和 App 数据。
+Owns Android AppWidget providers and RemoteViews rendering.
 
-## 设计和截图
+Widget actions should be small and reliable: update temporary widget state,
+write confirmed transactions through the repository, then refresh widgets and
+app-visible data.
 
-App 内使用的教程图片在：
+## Design assets
+
+The Android app includes the currently used onboarding images in:
 
 ```text
 app/src/main/res/drawable-nodpi/
 ```
 
-README 使用的公开展示图在：
+Illustrator files, proposal boards, and intermediate widget explorations are
+kept out of the public source snapshot unless they are intentionally promoted to
+final public assets.
+
+If the tutorial artwork is revised, export the final PNG cards and copy them to:
 
 ```text
-docs/screenshots/
+app/src/main/res/drawable-nodpi/
 ```
 
-Logo 等最终品牌素材在：
+## Local-only artifacts
 
-```text
-docs/brand/
-```
+`artifacts/` contains review screenshots, UI dumps, historical OCR/screenshot
+experiments, and sample data. This folder is intentionally ignored by Git.
 
-Illustrator 源文件、提案板、历史重绘稿和评审截图默认留在本地。只有确认要公开展示的成品，才复制到 `docs/` 或 `design/`。
+If a file from `artifacts/` becomes product documentation or a public demo asset,
+copy a sanitized version into `docs/` or `design/` instead of linking directly to
+the local artifact.
 
-## 本地材料
+## Adding future modules
 
-`artifacts/` 用来放本地评审截图、UI dump、旧实验材料和样例数据，默认不提交。
+Keep the project one Android app module until there is real pressure to split.
+When the codebase grows, the first useful extraction points are:
 
-如果某个本地文件后续要变成公开文档或演示素材，先整理、脱敏，再复制到 `docs/` 或 `design/`，不要直接引用本地路径。
+- `:core-model` for data classes and pure domain logic.
+- `:core-export` for CSV import/export contracts.
+- `:widget` only if widget code becomes independently testable and large.
 
-## 后续拆分
-
-现在先保持一个 Android app module。等代码真的变复杂，再考虑拆：
-
-- `:core-model`：数据类和纯领域逻辑
-- `:core-export`：CSV 导入导出契约
-- `:widget`：如果小组件代码变得足够独立、足够大
-
-目前更重要的是保持项目简单、可读、方便别人快速安装和理解。
+Do not split modules just to look mature. The current priority is a simple,
+readable app that friends can install and that future contributors can
+understand quickly.

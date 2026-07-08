@@ -1,69 +1,75 @@
-# 发布检查清单
+# Release checklist
 
-这份清单先服务于小范围体验版，后面如果要上架应用商店，再补正式签名、隐私政策和商店素材。
+This checklist is for small friend testing first, then GitHub and app-store
+preparation later.
 
-## 每次发 APK 前
+## Before every shared APK
 
-- 构建目标版本：
+- Build the intended flavor:
 
 ```powershell
-.\gradlew.bat :app:assembleMainlineDebug
+.\gradlew.bat :app:assembleFriendsDebug
 ```
 
-- 尽量在干净设备或备用设备上安装。
-- 首次打开 App，确认教程和主界面显示正常。
-- 分别添加当前包含的桌面小组件：
-  - 4x2 深色
-  - 4x2 浅色
-  - 4x3 深色
-  - 4x3 浅色
-  - 4x4 深色
-  - 4x4 浅色
-- 从小组件记一笔支出和一笔收入。
-- 回到 App，确认流水和统计同步刷新。
-- 编辑一笔流水，检查：
-  - 金额
-  - 日期
-  - 时间
-  - 支出 / 收入
-  - 分类
-  - 备注
-- 导出 CSV，确认文件出现在 `Download/tickle`。
-- 在测试安装里从最新 CSV 恢复一次。
+- Install on a clean or secondary device when possible.
+- Open the app once and confirm the visual guide appears cleanly.
+- Add each widget size/style that is included in the build:
+  - 4x2 dark
+  - 4x2 light
+  - 4x3 dark
+  - 4x3 light
+  - 4x4 dark
+  - 4x4 light
+- From a widget, add one expense and one income.
+- Reopen the app and confirm ledger and statistics update.
+- Edit a ledger entry:
+  - amount
+  - date
+  - time
+  - expense/income type
+  - category
+  - note
+- Export data and confirm files appear under `Download/tickle`.
+- Restore from the latest export on a test install.
 
-## 发到 GitHub 前
+## Before GitHub
 
-- 确认 `.gradle/`、`build/`、`dist/`、`artifacts/` 没有被 Git 跟踪。
-- 确认 `local.properties` 没有提交。
-- 不把过程稿、旧 UI dump、个人截图直接放进公开仓库。
-- 确认 `README.md`、`docs/PROJECT_STRUCTURE.md`、`docs/DATA_EXPORT.md` 和实际功能一致。
-- 确认 APK 文件名、SHA-256 和下载链接一致。
-- 确认 License 存在。
+- Confirm `artifacts/` is ignored and does not contain tracked private data.
+- Confirm `dist/` is ignored and APKs are not committed.
+- Remove or redact personal screenshots before turning any artifact into docs.
+- Keep `README.md`, `docs/PROJECT_STRUCTURE.md`, and `docs/DATA_EXPORT.md`
+  current with the actual product behavior.
+- Decide whether Illustrator `.ai` files should be committed, moved to Git LFS,
+  or kept local only.
+- Add a license before making the repository public.
 
-## 应用商店前
+## Before app store review
 
-- 创建正式签名包。
-- 更新 `versionCode` 和 `versionName`。
-- 确认最终包名和应用名。
-- 准备隐私说明：
-  - 数据默认本地保存
-  - CSV 导出 / 恢复方式
-  - 无账号系统
-  - 当前版本不联网、不读取短信、不扫描相册、不依赖通知识别账单
-- 准备商店截图：
-  - 桌面小组件快速记账
-  - App 内手动记账
-  - 流水
-  - 统计
-  - 导出 / 恢复
-- 尽量测试 Samsung、Xiaomi、OPPO、vivo 和原生 Android 启动器的小组件可用性。
+- Create a signed release build.
+- Bump `versionCode` and `versionName`.
+- Decide final package id and app name.
+- Prepare privacy policy text:
+  - local-first data storage
+  - export/restore behavior
+  - no account system
+  - no screenshot/OCR capture in current version
+- Prepare store screenshots for:
+  - widget quick entry
+  - in-app manual entry
+  - ledger
+  - statistics
+  - export/restore
+- Test widget availability on Samsung, Xiaomi, OPPO, vivo, and a stock Android
+  launcher if possible.
 
-## 朋友测试版
+## Friend-test flavor
 
-`friends` flavor 带独立 application id 后缀，可以和普通版共存：
+The `friends` product flavor uses an application id suffix so it can coexist
+with the mainline app:
 
 ```text
 com.lightledger.app.friends
 ```
 
-给朋友发测试包时可以用这个版本，避免覆盖你自己手机里的主版本。
+Use this flavor when sending APKs to friends so their test app does not replace
+your main local version.
