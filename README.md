@@ -14,7 +14,7 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
 
 如果你期待的是自动同步、账单识别、多账户资产分析，Tickle 轻记可能不是最合适的选择。
 
-> 目前是早期体验版，核心记账、小组件、统计和 CSV 备份流程已经可用，适合试用和小范围测试。截图和教程图先放一版，后面可以继续换成更正式的商店素材。
+> 目前是早期体验版，核心记账、小组件、统计和 CSV 备份流程已经可用，适合试用和小范围测试。
 
 <p align="center">
   <img src="docs/screenshots/preview/feature-cards.png" width="860" alt="Tickle 轻记功能小卡片">
