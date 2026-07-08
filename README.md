@@ -4,7 +4,7 @@
 
 不联网 · 不登录 · 不上传 · 本地保存 · 约 11 MB
 
-[下载体验版 APK](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle-v0.1.0-debug.apk)
+[下载体验版 APK](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle.apk)
 
 <p align="center">
   <img src="docs/screenshots/preview/hero.png" width="860" alt="Tickle 轻记界面预览">
@@ -20,9 +20,7 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
   <img src="docs/screenshots/preview/feature-cards.png" width="860" alt="Tickle 轻记功能小卡片">
 </p>
 
-## 先下载试试
-
-[下载 APK：tickle-v0.1.0-debug.apk](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle-v0.1.0-debug.apk)
+## 安装说明
 
 这个包是 debug 体验版，不是应用商店的正式签名包。Android 安装时可能会提示「未知来源」或风险提醒，这是因为还没有上架商店。
 

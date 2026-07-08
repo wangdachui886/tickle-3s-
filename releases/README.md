@@ -4,7 +4,7 @@
 
 当前体验包：
 
-- [tickle-v0.1.0-debug.apk](tickle-v0.1.0-debug.apk)
+- [tickle.apk](tickle.apk)
 
 当前 APK 的 SHA-256：
 
