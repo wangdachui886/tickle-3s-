@@ -1,82 +1,71 @@
-# tickle 3 秒记账
+# tickle
 
-tickle 是一个面向中文用户的本地优先 Android 记账 App，主打「3 秒快速手动记账」和「桌面小组件直接记一笔」。
+一个想把「记一笔」压到 3 秒以内的 Android 记账小工具。
 
-这个仓库是第一版公开源码快照。截图和最终版教程图还在整理中，后续会补到 README 和 `docs/` 里。
+我做它，是因为很多记账 App 太完整了。完整当然好，但每天真正要记账的时候，我常常只是想留下这一笔：刚刚吃饭花了多少钱、打车花了多少钱、今天有没有收入。打开 App、点好几层、填一堆字段，这件事很容易就断掉。
 
-## 下载体验
+tickle 现在想先把一件事做好：**少打字，少切页面，能在桌面小组件里完成，就不要再进 App。**
 
-当前可下载的是 mainline debug 体验包：
+> 目前还是早期版本，适合试用和小范围测试。截图和重新画过的教程图还在整理，后面会补上。
 
-[下载 tickle-3s-mainline-debug.apk](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle-3s-mainline-debug.apk)
+## 先下载试试
 
-说明：
+[下载 APK：tickle-3s-mainline-debug.apk](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle-3s-mainline-debug.apk)
 
-- 这是用于体验和小范围测试的 debug APK，不是应用商店签名 release。
-- Android 安装时可能需要允许「安装未知来源应用」。
-- 当前包名是 `com.lightledger.app`，应用名是 `tickle`。
+这个包是 debug 体验版，不是应用商店的正式签名包。Android 安装时可能会提示「未知来源」或风险提醒，这是因为还没有上架商店。
 
-## 产品方向
+当前包名：`com.lightledger.app`
 
-- 手动记账优先，不依赖截图识别、OCR、通知读取或后台自动抓取。
-- 桌面小组件是核心入口：打开手机桌面就能快速记一笔。
-- 数据默认只保存在本机 Room 数据库。
-- 备份和恢复使用普通 CSV 文件，路径为 `Download/tickle`。
-- 界面方向克制、黑白、轻量，优先保证触控效率。
+## 现在能做什么
 
-## 当前功能
+- 在 App 里快速记一笔支出或收入。
+- 选择历史日期，补记前几天的账。
+- 管理常用分类，也可以加自己的分类。
+- 在流水页按日期看记录，支持编辑和删除。
+- 在统计页看日、月、年的支出或收入。
+- 导出 CSV，也可以从最近一次导出的 CSV 恢复。
+- 添加桌面小组件，直接在桌面上记账。
 
-- App 内快速记账，支持支出/收入切换。
-- 支持选择历史日期，方便补记。
-- 支持常用分类、自定义分类和分类管理。
-- 流水按月份和日期分组，支持筛选、编辑和删除。
-- 统计页支持日/月/年视角，并明确区分支出和收入。
-- 支持 CSV 导出和从最新导出文件恢复。
-- 支持 6 个桌面小组件：
-  - 4x2 深色
-  - 4x2 浅色
-  - 4x3 深色
-  - 4x3 浅色
-  - 4x4 深色
-  - 4x4 浅色
-- 小组件支持直接输入、撤销、支出/收入切换和跨天刷新。
+小组件现在有 6 个版本：
 
-## 隐私说明
+- 4x2 深色 / 浅色
+- 4x3 深色 / 浅色
+- 4x4 深色 / 浅色
 
-当前版本没有账号系统、远程后端、统计 SDK、网络接口、截图读取、OCR 或通知读取。记账数据存储在本机，CSV 导出/恢复由用户主动触发。
+小组件支持金额按钮、分类按钮、支出/收入切换、保存、撤销，也会在跨天后刷新当天汇总。
 
-## 数据导出
+## 暂时不做什么
 
-CSV 文件导出到：
+目前没有账号、没有云同步、没有统计 SDK，也不会读通知、截屏或做 OCR。
+
+之前试过更自动化的方向，但可靠性不够好。记账这种东西，一旦误记、漏记，用户很快就不会相信它。所以现在先把手动和小组件这条路做稳，再考虑后面的自动化。
+
+数据默认留在手机本地。CSV 导出和恢复都由用户自己点，文件放在：
 
 ```text
 Download/tickle
 ```
 
-每次导出会生成一份交易 CSV，字段包括 `date`、`direction`、`amount`、`unit`、`type` 和 `note`。具体字段见 `docs/DATA_EXPORT.md`。
+CSV 字段现在很少：`date`、`direction`、`amount`、`unit`、`type`、`note`。详细说明在 [docs/DATA_EXPORT.md](docs/DATA_EXPORT.md)。
 
-## 本地开发
+## 开发
 
-用 Android Studio 打开项目根目录：
+用 Android Studio 打开项目根目录即可。
 
-```text
-E:\AppDev\LightLedger
-```
-
-本机开发环境示例：
+这台机器上的本地开发环境示例：
 
 ```powershell
 $env:JAVA_HOME='D:\Andriod Studio\jbr'
 $env:PATH="$env:JAVA_HOME\bin;$env:PATH"
 ```
 
-构建普通版本：
+构建普通版：
 
 ```powershell
 .\gradlew.bat :app:assembleMainlineDebug
 ```
 
-构建朋友测试版，不覆盖普通版本：
+构建朋友测试版，不覆盖普通版：
 
 ```powershell
 .\gradlew.bat :app:assembleFriendsDebug
@@ -89,30 +78,23 @@ $env:PATH="$env:JAVA_HOME\bin;$env:PATH"
 .\gradlew.bat :app:testFriendsDebugUnitTest
 ```
 
-本地 debug APK 会复制到：
+更多结构说明见 [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)，发布前检查见 [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)。
 
-```text
-dist\tickle-mainline-debug.apk
-dist\tickle-friends-debug.apk
-```
+## 版本
 
-## 版本说明
+- `mainline`：`com.lightledger.app`，应用名 `tickle`
+- `friends`：`com.lightledger.app.friends`，应用名 `tickle beta`
 
-当前 debug flavors：
+如果以后要上架商店，还需要重新做签名包、版本号、截图和隐私文案。
 
-- `mainline`: `com.lightledger.app`，应用名 `tickle`
-- `friends`: `com.lightledger.app.friends`，应用名 `tickle beta`
+## 目录说明
 
-正式上架前还需要签名 release 包、更新 `versionCode` / `versionName`、准备商店截图和隐私文案，并按 `docs/RELEASE_CHECKLIST.md` 做完整回归。
+- `app/`：Android 源码。
+- `docs/`：数据格式、项目结构、发布检查清单。
+- `releases/`：公开下载用 APK。
+- `dist/`：本地构建出的测试包，不作为源码维护。
+- `artifacts/`：本地截图、UI dump、旧实验材料，不进公开仓库。
 
 ## License
 
 Apache License 2.0.
-
-## 本地目录说明
-
-- `dist/`：本地构建出的测试 APK，不直接作为源码目录维护。
-- `artifacts/`：本地截图、UI dump、测试导出、旧实验材料等，不进入公开仓库。
-- `releases/`：公开下载用 APK。后续有正式签名 release 后，会优先使用 GitHub Releases。
-
-除明确放入 `releases/` 的公开 APK 外，其他构建产物、私有样本和过程材料都不进入仓库。
