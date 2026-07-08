@@ -14,7 +14,7 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
 
 如果你期待的是自动同步、账单识别、多账户资产分析，Tickle 轻记可能不是最合适的选择。
 
-> 目前还是中期版本，但足够稳定，适合试用和小范围测试。截图和教程图先放一版，后面可以继续换成更正式的商店素材。
+> 目前是早期体验版，核心记账、小组件、统计和 CSV 备份流程已经可用，适合试用和小范围测试。截图和教程图先放一版，后面可以继续换成更正式的商店素材。
 
 <p align="center">
   <img src="docs/screenshots/preview/feature-cards.png" width="860" alt="Tickle 轻记功能小卡片">
@@ -25,6 +25,8 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
 [下载 APK：tickle-v0.1.0-debug.apk](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle-v0.1.0-debug.apk)
 
 这个包是 debug 体验版，不是应用商店的正式签名包。Android 安装时可能会提示「未知来源」或风险提醒，这是因为还没有上架商店。
+
+后续版本会优先通过 GitHub Releases 发布。
 
 当前包名：`com.lightledger.app`
 
@@ -123,13 +125,6 @@ CSV 字段现在很少：`date`、`direction`、`amount`、`unit`、`type`、`no
 
 用 Android Studio 打开项目根目录即可。
 
-这台机器上的本地开发环境示例：
-
-```powershell
-$env:JAVA_HOME='D:\Andriod Studio\jbr'
-$env:PATH="$env:JAVA_HOME\bin;$env:PATH"
-```
-
 构建普通版：
 
 ```powershell
@@ -150,6 +145,8 @@ $env:PATH="$env:JAVA_HOME\bin;$env:PATH"
 ```
 
 更多结构说明见 [docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)，发布前检查见 [docs/RELEASE_CHECKLIST.md](docs/RELEASE_CHECKLIST.md)。
+
+本地环境和开发说明见 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)。
 
 ## 版本
 
