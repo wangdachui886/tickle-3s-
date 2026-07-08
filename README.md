@@ -53,7 +53,7 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
 ## 桌面小组件怎么用
 
 <p align="center">
-  <img src="docs/screenshots/preview/tutorial.png" width="860" alt="Tickle 轻记桌面小组件教程">
+  <img src="docs/screenshots/preview/tutorial.png" width="1000" alt="Tickle 轻记桌面小组件教程">
 </p>
 
 ## 为什么更轻，也更安心？
