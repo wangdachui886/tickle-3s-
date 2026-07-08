@@ -6454,14 +6454,14 @@ private fun ExportScreen(
             ) {
                 BackupMark()
                 Text(
-                    text = "数据安全，随时备份",
+                    text = "数据留在本地，随时导出",
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.ExtraBold,
                     color = MaterialTheme.colorScheme.onBackground,
                     textAlign = TextAlign.Center,
                 )
                 Text(
-                    text = "导出后可用于备份、表格整理，或交给 AI 做消费分析。",
+                    text = "导出后可用于自己备份，也可以放进表格里慢慢整理。",
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     textAlign = TextAlign.Center,
