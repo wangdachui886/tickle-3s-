@@ -16,5 +16,11 @@ especially:
 app/src/main/res/drawable-nodpi/
 ```
 
-Screenshots and the final visual tutorial will be added after the current
-artwork pass is finished.
+Public screenshots, logo assets, and the current README tutorial image live in:
+
+```text
+docs/
+```
+
+Keep source files and process drafts local unless they are deliberately promoted
+to public-facing assets.

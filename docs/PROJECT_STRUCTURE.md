@@ -6,13 +6,15 @@ source, design assets, local evidence, and distributable builds.
 ## Workspace level
 
 ```text
-E:\AppDev
+project-root/
   README.md
   .gitignore
-  LightLedger\
+  app/
+  docs/
+  releases/
 ```
 
-`E:\AppDev` is a local workspace. The app project root is `LightLedger/`.
+Open the repository root in Android Studio.
 
 ## App project level
 
