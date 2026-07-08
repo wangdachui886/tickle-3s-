@@ -4,7 +4,7 @@
 
 当前文件：
 
-- `tickle-3s-mainline-debug.apk`：mainline debug 体验包，用于快速试用和小范围测试。
+- `tickle.apk`：当前体验包，用于快速试用和小范围测试。
 
 SHA-256:
 
