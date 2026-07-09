@@ -465,32 +465,32 @@ private fun FirstRunGuideDialog(
     val pages = remember {
         listOf(
             VisualGuidePage(
-                eyebrow = "桌面卡片",
-                title = "把 tickle 放到桌面",
+                eyebrow = "放到桌面",
+                title = "添加 tickle 小组件",
                 body = "长按桌面空白处或 App 图标，进入系统小组件，选择 tickle。",
                 imageRes = R.drawable.guide_widget_add,
-                imageAspectRatio = 497f / 556f,
+                imageAspectRatio = 792f / 1332f,
             ),
             VisualGuidePage(
-                eyebrow = "直接操作",
-                title = "不进 App，也能记一笔",
-                body = "点金额，选分类，最后点记入。金额区域点一下可以清空本次输入。",
+                eyebrow = "直接记一笔",
+                title = "不进 App，也能记账",
+                body = "在桌面小组件上点金额、选分类，最后点记入。",
                 imageRes = R.drawable.guide_widget_direct,
-                imageAspectRatio = 497f / 556f,
+                imageAspectRatio = 792f / 1332f,
             ),
             VisualGuidePage(
-                eyebrow = "支出 / 收入",
-                title = "一点切换模式",
-                body = "支出默认小额按钮；切到收入后，会变成 +100、+1000、+5000。",
+                eyebrow = "输错就改",
+                title = "金额和模式都能改",
+                body = "支出 / 收入可以切换，金额区域点一下可以清空本次输入。",
                 imageRes = R.drawable.guide_widget_mode,
-                imageAspectRatio = 514f / 557f,
+                imageAspectRatio = 792f / 1332f,
             ),
             VisualGuidePage(
-                eyebrow = "同步备份",
-                title = "记完就同步",
-                body = "桌面卡片保存后，流水和统计会刷新；需要备份时导出数据包。",
+                eyebrow = "本地查看",
+                title = "流水和统计自己导出",
+                body = "记录留在本地，需要整理或备份时，自己导出 CSV。",
                 imageRes = R.drawable.guide_widget_sync,
-                imageAspectRatio = 513f / 562f,
+                imageAspectRatio = 792f / 1332f,
             ),
         )
     }
@@ -667,7 +667,7 @@ private fun GuideVisualPanel(
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .fillMaxWidth()
-                .widthIn(max = 326.dp)
+                .widthIn(max = 248.dp)
                 .aspectRatio(imageAspectRatio),
         )
     }

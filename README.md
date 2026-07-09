@@ -2,7 +2,7 @@
 
 像按计算器一样，3 秒记一笔。
 
-不联网 · 不登录 · 不上传 · 本地保存 · 约 11 MB
+不联网 · 不登录 · 不上传 · 本地保存 · 约 12 MB
 
 [下载体验版 APK](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle.apk)
 
@@ -28,7 +28,7 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
 
 当前包名：`com.lightledger.app`
 
-安装包现在 11 MB 左右，没有后端、账号系统和统计 SDK。打开就是记账。
+安装包现在 12 MB 左右，没有后端、账号系统和统计 SDK。打开就是记账。
 
 ## 看一眼界面
 
