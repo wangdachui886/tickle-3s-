@@ -1,6 +1,10 @@
 # 下载
 
-这里先放当前体验包，方便从 README 直接下载。
+这里保留当前体验包，方便临时下载和校验。
+
+正式发布入口会优先使用 GitHub Releases：
+
+- [v0.1.0-alpha](https://github.com/wangdachui886/tickle-android/releases/tag/v0.1.0-alpha)
 
 当前体验包：
 

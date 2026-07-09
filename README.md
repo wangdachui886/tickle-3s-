@@ -4,13 +4,15 @@
 
 不联网 · 不登录 · 不上传 · 本地保存 · 约 12 MB
 
-[下载体验版 APK](https://github.com/wangdachui886/tickle-3s-/raw/main/releases/tickle.apk)
+[下载体验版 APK](https://github.com/wangdachui886/tickle-android/releases/download/v0.1.0-alpha/tickle-v0.1.0-alpha.apk)
 
 <p align="center">
   <img src="docs/screenshots/preview/hero.png" width="860" alt="Tickle 轻记界面预览">
 </p>
 
 Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App 或桌面小组件上点几下，就能记下一笔日常消费。（强烈推荐桌面小组件记账！）
+
+Tickle 不是更聪明的记账 App，而是更少打扰的记账 App。
 
 如果你期待的是自动同步、账单识别、多账户资产分析，Tickle 轻记可能不是最合适的选择。
 
@@ -25,8 +27,6 @@ Tickle 轻记是一个小而克制的 Android 记账工具。你只需要在 App
 这个包是 debug 体验版，不是应用商店的正式签名包。Android 安装时可能会提示「未知来源」或风险提醒，这是因为还没有上架商店。
 
 后续版本会优先通过 GitHub Releases 发布。
-
-当前包名：`com.lightledger.app`
 
 安装包现在 12 MB 左右，没有后端、账号系统和统计 SDK。打开就是记账。
 
