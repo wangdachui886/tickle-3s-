@@ -465,37 +465,20 @@ private fun FirstRunGuideDialog(
     val pages = remember {
         listOf(
             VisualGuidePage(
-                eyebrow = "放到桌面",
-                title = "添加 tickle 小组件",
-                body = "长按桌面空白处或 App 图标，进入系统小组件，选择 tickle。",
                 imageRes = R.drawable.guide_widget_add,
-                imageAspectRatio = 792f / 1332f,
             ),
             VisualGuidePage(
-                eyebrow = "直接记一笔",
-                title = "不进 App，也能记账",
-                body = "在桌面小组件上点金额、选分类，最后点记入。",
                 imageRes = R.drawable.guide_widget_direct,
-                imageAspectRatio = 792f / 1332f,
             ),
             VisualGuidePage(
-                eyebrow = "输错就改",
-                title = "金额和模式都能改",
-                body = "支出 / 收入可以切换，金额区域点一下可以清空本次输入。",
                 imageRes = R.drawable.guide_widget_mode,
-                imageAspectRatio = 792f / 1332f,
             ),
             VisualGuidePage(
-                eyebrow = "本地查看",
-                title = "流水和统计自己导出",
-                body = "记录留在本地，需要整理或备份时，自己导出 CSV。",
                 imageRes = R.drawable.guide_widget_sync,
-                imageAspectRatio = 792f / 1332f,
             ),
         )
     }
     var pageIndex by remember { mutableIntStateOf(0) }
-    val page = pages[pageIndex]
 
     Dialog(
         onDismissRequest = onDismiss,
@@ -509,8 +492,8 @@ private fun FirstRunGuideDialog(
                 modifier = Modifier
                     .fillMaxSize()
                     .navigationBarsPadding()
-                    .padding(start = 24.dp, top = 28.dp, end = 24.dp, bottom = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                    .padding(start = 24.dp, top = 24.dp, end = 24.dp, bottom = 12.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -538,39 +521,21 @@ private fun FirstRunGuideDialog(
                     }
                 }
 
-                Crossfade(
-                    targetState = pageIndex,
-                    animationSpec = tween(durationMillis = 260, easing = FastOutSlowInEasing),
-                    label = "guideVisual",
-                ) { currentPage ->
-                    GuideVisualPanel(
-                        imageRes = pages[currentPage].imageRes,
-                        imageAspectRatio = pages[currentPage].imageAspectRatio,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    Text(
-                        text = page.eyebrow,
-                        style = MaterialTheme.typography.labelLarge,
-                        fontWeight = FontWeight.ExtraBold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    )
-                    Text(
-                        text = page.title,
-                        style = MaterialTheme.typography.headlineMedium,
-                        fontWeight = FontWeight.ExtraBold,
-                        color = MaterialTheme.colorScheme.onBackground,
-                    )
-                    Text(
-                        text = page.body,
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        lineHeight = 23.sp,
-                    )
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    contentAlignment = Alignment.TopCenter,
+                ) {
+                    Crossfade(
+                        targetState = pageIndex,
+                        animationSpec = tween(durationMillis = 260, easing = FastOutSlowInEasing),
+                        label = "guideVisual",
+                    ) { currentPage ->
+                        GuideVisualPanel(
+                            imageRes = pages[currentPage].imageRes,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                    }
                 }
 
                 Row(
@@ -600,7 +565,7 @@ private fun FirstRunGuideDialog(
                         enabled = pageIndex > 0,
                         modifier = Modifier
                             .weight(0.82f)
-                            .height(58.dp),
+                            .height(52.dp),
                         shape = RoundedCornerShape(999.dp),
                         border = BorderStroke(1.dp, Hairline),
                         colors = ButtonDefaults.outlinedButtonColors(
@@ -624,7 +589,7 @@ private fun FirstRunGuideDialog(
                         },
                         modifier = Modifier
                             .weight(1.18f)
-                            .height(58.dp),
+                            .height(52.dp),
                         shape = RoundedCornerShape(999.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Ink,
@@ -644,17 +609,12 @@ private fun FirstRunGuideDialog(
 }
 
 private data class VisualGuidePage(
-    val eyebrow: String,
-    val title: String,
-    val body: String,
     val imageRes: Int,
-    val imageAspectRatio: Float,
 )
 
 @Composable
 private fun GuideVisualPanel(
     imageRes: Int,
-    imageAspectRatio: Float,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -667,8 +627,8 @@ private fun GuideVisualPanel(
             contentScale = ContentScale.Fit,
             modifier = Modifier
                 .fillMaxWidth()
-                .widthIn(max = 248.dp)
-                .aspectRatio(imageAspectRatio),
+                .widthIn(max = 200.dp)
+                .aspectRatio(792f / 1332f),
         )
     }
 }
